@@ -81,7 +81,76 @@
         border-right: none;
       }
     }
-  </style>
+  
+.colaborador-card {
+  flex: 1 1 300px;
+  max-width: 400px;
+  background: white;
+  padding: 1rem;
+  text-align: justify;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.colaborador-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+
+.mobile-nav {
+  display: none;
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+}
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--gray);
+}
+.mobile-menu .tab-button {
+  border-bottom: 1px solid #ccc;
+  background: #ddd;
+}
+@media (max-width: 768px) {
+  .tabs {
+    display: none;
+  }
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile-menu.active {
+    display: flex;
+  }
+}
+
+
+.photo-placeholder,
+.colaborador-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  text-align: justify;
+}
+
+
+.mobile-menu .tab-button {
+  color: black;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+</style>
 <style>
 .read-more-content {
     display: none;
@@ -142,6 +211,18 @@
 <header>
 <h1>Colectivo Narrativas, Crítica y Educación Matemática</h1>
 </header>
+
+<nav class="mobile-nav">
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="tab-button" onclick="showTab(event, 'inicio')">Inicio</div>
+    <div class="tab-button" onclick="showTab(event, 'produccion')">Producción Académica</div>
+    <div class="tab-button" onclick="showTab(event, 'proyectos')">Proyectos</div>
+    <div class="tab-button" onclick="showTab(event, 'seminarios')">Seminarios</div>
+    <div class="tab-button" onclick="showTab(event, 'integrantes')">Integrantes</div>
+    <div class="tab-button" onclick="showTab(event, 'colaboradores')">Profesores Colaboradores</div>
+  </div>
+</nav>
 <div class="tabs">
 <div class="tab-button active" onclick="showTab(event, 'inicio')">Inicio</div>
 <div class="tab-button" onclick="showTab(event, 'produccion')">Producción Académica</div>
@@ -154,7 +235,7 @@
 <h2>¿Quiénes somos?</h2>
 <p>El <strong>Colectivo Narrativas, Crítica y Educación Matemática</strong> nace en el año 2020, liderado por las profesoras <strong>Claudia Salazar Amaya</strong> y <strong>Elizabeth Torres Puentes</strong> de la <strong>Universidad Pedagógica Nacional (Colombia)</strong>. Esta iniciativa surge a partir de sus experiencias investigativas como formadoras de profesores de matemáticas, con el propósito de reflexionar críticamente sobre las prácticas educativas y la investigación en educación matemática desde una perspectiva narrativa.</p>
 <div class="photo-placeholder">
-<img alt="Equipo Fundador" src="index/img/fundadores.jpg" width="400"/>
+<img alt="Equipo Fundador" src="index/img/fundadores.jpg" width="600"/>
 </div>
 </div>
 <div class="tab-content" id="produccion">
@@ -186,7 +267,7 @@
 
 <div class="tab-content" id="seminarios">
 <h2>Seminarios Doctorales</h2>
-<div class="card" style="text-align: left;">
+<div style="text-align: left;">
 <h3 style="color: #4a148c; font-size: 1.5rem;">Perspectiva Narrativa en educación. Aportes y posibilidades (Doctorado interinstitucional en Educación- Universidad Pedagógica Nacional- Seminario de educación y pedagogía)</h3>
 <div style="font-size: 1.5rem; color: #4a148c; margin-bottom: 1rem;">2022-2</div>
 
@@ -202,14 +283,13 @@
       
 </div>
 <span class="ver-mas" id="toggle-contenido-perspectivanarrativaeneducaciónaportesyposibilidades"></span>
-
-<div class="photo-placeholder">
+</div>
+<div style="text-align: center;">
 <img class="seminario-img" src="index/img/SEMIN/SEM 1.1.png" style="width: 300px; border-radius: 8px;"/>
 <img class="seminario-img" src="index/img/SEMIN/SEM 1.2.png" style="width: 340px; border-radius: 8px;"/>
 <img class="seminario-img" src="index/img/SEMIN/SEM 1.3.png" style="width: 300px; border-radius: 8px;"/>
 </div>
-</div>
-<div class="card" style="text-align: left;">
+<div  style="text-align: left;">
 <h3 style="color: #4a148c; font-size: 1.5rem;">Narrativas, Escuela, Experiencia e Investigación (Doctorado interinstitucional en Educación- Universidad Pedagógica Nacional- Seminario de educación y pedagogía)</h3>
 <div style="font-size: 1.5rem; color: #4a148c; margin-bottom: 1rem;">2023-1</div>
 
@@ -227,7 +307,7 @@
 </div>
 <span class="ver-mas" id="toggle-contenido-narrativasescuelaexperienciaeinvestigación"></span>
 
-<div class="photo-placeholder">
+<div class="text-align: center">
 <img class="seminario-img" src="index/img/SEMIN/SEM 2.1.png" style="width: 300px; border-radius: 8px;"/>
 <img class="seminario-img" src="index/img/SEMIN/SEM 2.3.png" style="width: 300px; border-radius: 8px;"/>
 <img class="seminario-img" src="index/img/SEMIN/SEM 2.4.png" style="width: 300px; border-radius: 8px;"/>
@@ -236,7 +316,7 @@
 <img class="seminario-img" src="index/img/SEMIN/SEM 2.7.png" style="width: 300px; border-radius: 8px;"/>
 <img class="seminario-img" src="index/img/SEMIN/SEM 2.2.png" style="width: 100px; border-radius: 8px;"/>
 </div>
-<div class="card" style="text-align: left;">
+<div style="text-align: left;">
 <h3 style="color: #4a148c; font-size: 1.5rem;">Fundamentos de la investigación Narrativa (Doctorado interinstitucional en Educación- Universidad Pedagógica Nacional- Seminario de educación y pedagogía)</h3>
 <div style="font-size: 1.5rem; color: #4a148c; margin-bottom: 1rem;">2023-2</div>
 
@@ -260,7 +340,7 @@
 <span class="ver-mas" id="toggle-contenido-fundamentosdelainvestigaciónnarrativa"></span>
 
 </div>
-<div class="card" style="text-align: left;">
+<div style="text-align: left;">
 <h3 style="color: #4a148c; font-size: 1.5rem;">Incursiones de la crítica y lo político en la educación matemática y su investigación (Doctorado interinstitucional en Educación- Universidad Pedagógica Nacional- Seminario de Énfasis en educación matemática)</h3>
 <div style="font-size: 1.5rem; color: #4a148c; margin-bottom: 1rem;">2024-2</div>
 
@@ -282,14 +362,14 @@ Cabe destacar que Skovsmose (2007), desde la perspectiva de la Educación Matem�
 </div>
 <span class="ver-mas" id="toggle-contenido-incursionesdelacríticaylopolíticoenlaeducaciónmatemáticaysuinvestigación"></span>
 
-<div style="margin-left: 400px;">
+<div style="text-align: center;">
 <img class="seminario-img" src="index/img/SEMIN/SEM 3.1.png" style="width: 300px; border-radius: 8px;"/>
 <img class="seminario-img" src="index/img/SEMIN/SEM 3.2.png" style="width: 300px; border-radius: 8px;"/>
 <img class="seminario-img" src="index/img/SEMIN/SEM 3.3.png" style="width: 300px; border-radius: 8px;"/>
 </div>
 </div>
 </div>
-<div class="card" style="text-align: left;">
+<div style="text-align: left;">
 <h3 style="color: #4a148c; font-size: 1.5rem;">La investigación narrativa como metodología para investigar la escuela y la educación (Doctorado interinstitucional en Educación- Universidad Pedagógica Nacional- Seminario de Énfasis en educación matemática)</h3>
 <div style="font-size: 1.5rem; color: #4a148c; margin-bottom: 1rem;">2025-1</div>
 
@@ -325,7 +405,7 @@ Cabe destacar que Skovsmose (2007), desde la perspectiva de la Educación Matem�
 </div>
 <span class="ver-mas" id="toggle-narrativa"></span>
 
-<div class="photo-placeholder">
+<div class="text-align: center">
 <img class="seminario-img" src="index/img/SEMIN/SEM 4.2.png" style="width: 300px; border-radius: 8px;"/>
 <img class="seminario-img" src="index/img/SEMIN/SEM 4.3.png" style="width: 300px; border-radius: 8px;"/>
 <img class="seminario-img" src="index/img/SEMIN/SEM 4.4.png" style="width: 300px; border-radius: 8px;"/>
@@ -365,12 +445,12 @@ Cabe destacar que Skovsmose (2007), desde la perspectiva de la Educación Matem�
 </tr>
 <tr>
 <td style="border: 1px solid #ccc; padding: 10px;">Claudia Mayerly Sarmiento Martín</td>
-<td style="border: 1px solid #ccc; padding: 10px;">POSICIONAMIENTOS, ACCIONES E INTENCIONES: Prácticas pedagógicas de maestros que enseñan matemáticas en zonas de conflicto armado en Colombia.</td>
+<td style="border: 1px solid #ccc; padding: 10px;">Posicionamientos, acciones e intenciones: Prácticas pedagógicas de maestros que enseñan matemáticas en zonas de conflicto armado en Colombia.</td>
 <td style="border: 1px solid #ccc; padding: 10px;"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001543644" target="_blank">Ver CvLAC</a></td>
 </tr>
 <tr>
 <td style="border: 1px solid #ccc; padding: 10px;">José Antonio Rodríguez Suárez</td>
-<td style="border: 1px solid #ccc; padding: 10px;">SUBJETIVIDAD POLÍTICA Y DIDÁCTICA CRÍTICA EN PRÁCTICAS MATEMÁTICAS ESCOLARES DE EDUCADORES MATEMÁTICOS CRÍTICOS</td>
+<td style="border: 1px solid #ccc; padding: 10px;">Subjetividad política y didáctica crítica en prácticas matemáticas escolares de educadores matemáticos críticos</td>
 <td style="border: 1px solid #ccc; padding: 10px;"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000730645" target="_blank">Ver CvLAC</a></td>
 </tr>
 <tr>
@@ -386,26 +466,47 @@ Cabe destacar que Skovsmose (2007), desde la perspectiva de la Educación Matem�
 <div class="tab-content" id="colaboradores">
 <h2>Profesores Colaboradores</h2>
 <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
-<div class="photo-placeholder" style="flex: 1 1 250px;">
+<div class="photo-placeholder colaborador-card" >
 <img alt="Profesores 1" src="index/img/INVITDOS/inv1.jpeg" style="width: 400px; border-radius: 8px;">
-<p>Porfesor Javier Lesama Doctor en Ciencias con Especialidad en Matemática Educativa y Magíster en Ciencias con Especialidad en Matemática Educativa del Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (Cinvestav - IPN). Profesor titular del Centro de Investigación en Ciencia Aplicada y Tecnología Avanzada (CICATA - IPN).</p>
+<p>Porfesor Javier Lezama Doctor en Ciencias con Especialidad en Matemática Educativa y Magíster en Ciencias con Especialidad en Matemática Educativa del Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (Cinvestav - IPN). Profesor titular del Centro de Investigación en Ciencia Aplicada y Tecnología Avanzada (CICATA - IPN).</p>
 </img></div>
-<div class="photo-placeholder" style="flex: 1 1 250px;">
+<div class="photo-placeholder colaborador-card" >
 <img alt="Profesores 2" src="index/img/INVITDOS/inv2.jpeg" style="width: 400px; border-radius: 8px;">
 <p>Profesor José Torres  Doctor en Estudios Sociales de la Universidad Distrital Francisco José de Caldas. Profesor e investigador de la Universidad Distrital Francisco José de Caldas, Bogotá, Colombia.</p>
 </img></div>
-<div class="photo-placeholder" style="flex: 1 1 250px;">
+<div class="photo-placeholder colaborador-card" >
 <img alt="Profesores 3" src="index/img/INVITDOS/inv3.jpeg" style="width: 400px; border-radius: 8px;">
 <p>Filipe Fernandes Doctor en Educación Matemática por la Universidade Estadual Paulista Júlio de Mesquita Filho, con pasantía en la Universidad de Barcelona (España). Es Profesor de la Facultad de Educación de la Universidad Federal de Minas Gerais (UFMG), donde actúa en cursos de pregrado destinados a la formación de docentes que enseñan matemáticas y en el Programa de Postgrado en Educación: conocimiento e inclusión social. Miembro del Grupo de Investigación en Historia Oral y Educación Matemática (GHOEM)</p>
 </img></div>
-<div class="photo-placeholder" style="flex: 1 1 250px;">
+<div class="photo-placeholder colaborador-card" >
 <img alt="Profesor 4" src="index/img/INVITDOS/inv4.jpeg" style="width: 400px; border-radius: 8px;">
 <p>Luz Valoyes Chávez es Ph.D., Learning, Teaching and Curriculum (Mathematics Education). Es profesora asociada en la Universidad Católica de Temuco e investigadora asociada en el Centro de Investigación Avanzada en Educación-Universidad de Chile. Su investigación se centra en los procesos de racialización y justicia racial en la educación matemática en América Latina.</p>
 </img></div>
-<div class="photo-placeholder" style="flex: 1 1 250px;">
+<div class="photo-placeholder colaborador-card" >
 <img alt="Profesor 6" src="index/img/INVITDOS/inv7.jpeg" style="width: 400px; border-radius: 8px;">
-<p style="margin-left: 500px;margin-right: 500px;">Porfesora Diana Gil Chaves Doctora en Educación con Énfasis en Educación Matemáticas por la Universidad Distrital Francisco José de Caldas. Docente la Facultad de Ciencias y Educación de la Universidad Distrital en el programa de Licenciatura en Matemáticas.</p>
+<p>Porfesora Diana Gil Chaves Doctora en Educación con Énfasis en Educación Matemáticas por la Universidad Distrital Francisco José de Caldas. Docente la Facultad de Ciencias y Educación de la Universidad Distrital en el programa de Licenciatura en Matemáticas.</p>
 </img></div>
+<div class="photo-placeholder colaborador-card" >
+<img alt="Profesores 2" src="index/img/INVITDOS/inv2.jpeg" style="width: 400px; border-radius: 8px;">
+<p>Profesor José Torres  Doctor en Estudios Sociales de la Universidad Distrital Francisco José de Caldas. Profesor e investigador de la Universidad Distrital Francisco José de Caldas, Bogotá, Colombia.</p>
+</img></div>
+
+<div class="photo-placeholder colaborador-card" >
+  <img alt="Profesores 2" src="index/img/INVITDOS/inv8.jpg" style="width: 400px; border-radius: 8px;">
+  <p>Doctora en Educación con Énfasis en Lenguaje y Educación por la Universidad Distrital Francisco José de Caldas, Magíster en Lingüística Española por el Instituto Caro y Cuervo, Licenciada en Lingüística y Literatura con énfasis en Lingüística por la Universidad Distrital Francisco José de Caldas. Actualmente, es Docente e investigadora de la Universidad Distrital Francisco José de Caldas, se ha desempeñado como docente e investigadora del Departamento de Lenguas de la Facultad de Comunicación y Lenguaje de la Pontificia Universidad Javeriana.
+    Miembro de los grupos de investigación MORALIA y Lenguaje, Discurso y Complejidad, socia de la Asociación Latinoamericana de Estudios del Discurso (ALED).</p>
+  </img></div>
+
+  <div class="photo-placeholder colaborador-card" >
+    <img alt="Profesores 2" src="index/img/INVITDOS/inv9.jpg" style="width: 400px; border-radius: 8px;">
+    <p>Mireya González Licenciada en Ciencias Sociales de la Universidad Pedagógica Nacional, especialista en Enseñanza de la Historia, magíster en Historia de la Pontificia Universidad Javeriana y estudiante del doctorado en Historia de la Universidad Olavide Sevilla.</p>
+    </img></div>
+
+<div class="photo-placeholder colaborador-card" >
+      <img alt="Profesores 2" src="index/img/INVITDOS/inv10.jpg" style="width: 400px; border-radius: 8px;">
+      <p>Analía Leite: Doctora por la Universidad de Málaga con la tesis Historias de vida de maestros y maestras. La interminable construcción de las identidades: vida personal, trabajo y desarrollo profesional (2011). fue docnete hasta el año 2004 en la Facultad de Humanidades de la Universidad Nacional del Nordeste (Chaco) Argentina y desde el 2004 hasta la fecha en la Universidad de Málaga (España).  Integra el Grupo de Investigación ProCIE (Grupo consolidado de la Junta de Andalucía)</p>
+      </img></div>
+
 </div>
 </div>
 <script>
@@ -572,6 +673,13 @@ function toggleReadMore(element) {
   } else {
     toggle-contenido-perspectivanarrativaeneducaciónaportesyposibilidades.style.display = 'none';
   }
+</script>
+
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("active");
+}
 </script>
 
 </body>
